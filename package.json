@@ -1,0 +1,18 @@
+{
+  "name": "cc.io.http",
+  "version": "0.1.0",
+  "title": "IO HTTP Module",
+  "description": "IO module that implements HTTP & HTTPS protocol support.",
+  "bugs": null,
+  "license": "Apache-2.0",
+  "author": null,
+  "contributors": null,
+  "main": "http.js",
+  "pkxDependencies": [
+    "cc.type.0.1",
+    "cc.string.0.1",
+    "cc.event.0.1",
+    "cc.host.0.1",
+    "cc.io.0.1"
+  ]
+}
