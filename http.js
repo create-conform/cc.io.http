@@ -9,7 +9,7 @@
 //
 // Copyright Nick Verlinden (info@createconform.com)
 //
-///////////////////////////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 (function() {
     function HTTP(pkx, module) {
@@ -82,10 +82,10 @@
 
                     function getLengthXHR() {
                         var xhr = new XMLHttpRequest();
+                        xhr.open("HEAD", uri, true);
                         for (var h in own.headers) {
                             xhr.setRequestHeader(h, own.headers[h]);
                         }
-                        xhr.open("HEAD", uri, true);
                         xhr.onreadystatechange = function () {
                             if (xhr.readyState == xhr.DONE) {
                                 acceptRanges = xhr.getResponseHeader("Accept-Ranges") == "bytes";
@@ -213,10 +213,10 @@
 
                     function downloadXHR() {
                         var xhr = new XMLHttpRequest();
+                        xhr.open("GET", uri, true);
                         for (var h in own.headers) {
                             xhr.setRequestHeader(h, own.headers[h]);
                         }
-                        xhr.open("GET", uri, true);
                         xhr.onprogress = progressXHR;
                         xhr.responseType = "arraybuffer";
                         xhr.onreadystatechange = function() {
@@ -320,10 +320,10 @@
 
                     function readXHR() {
                         var xhr = new XMLHttpRequest();
+                        xhr.open("GET", uri, true);
                         for (var h in own.headers) {
                             xhr.setRequestHeader(h, own.headers[h]);
                         }
-                        xhr.open("GET", uri, true);
                         xhr.onprogress = progressXHR;
                         xhr.responseType = "arraybuffer";
                         xhr.setRequestHeader("Range", "bytes=" + position + "-" + (len? position + len - 1 : ""));
