@@ -66,17 +66,17 @@
                     if (buffer) {
                         resolve(buffer.length);
                     } else {
-                        if (host.isRuntimeBrowserFamily()) {
+                        if (host.isRuntimeNodeFamily()) {
+                            getLengthNode();
+                            return;
+                        }
+                        else if (host.isRuntimeBrowserFamily()) {
                             getLengthXHR();
                             return;
                         }
-                        switch(host.runtime) {
-                            case host.RUNTIME_NWJS:
-                            case host.RUNTIME_NODEJS:
-                                getLengthNode();
-                                break;
-                            default:
-                                refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                        else {
+                            refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                            return;
                         }
                     }
 
@@ -197,17 +197,17 @@
                     }
 
                     function download() {
-                        if (host.isRuntimeBrowserFamily()) {
+                        if (host.isRuntimeNodeFamily()) {
+                            downloadNode();
+                            return;
+                        }
+                        else if (host.isRuntimeBrowserFamily()) {
                             downloadXHR();
                             return;
                         }
-                        switch(host.runtime) {
-                            case host.RUNTIME_NWJS:
-                            case host.RUNTIME_NODEJS:
-                                downloadNode();
-                                break;
-                            default:
-                                refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                        else {
+                            refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                            return;
                         }
                     }
 
@@ -303,17 +303,17 @@
                             }
                         }
                         else {
-                            if (host.isRuntimeBrowserFamily()) {
+                            if (host.isRuntimeNodeFamily()) {
+                                readNode();
+                                return;
+                            }
+                            else if (host.isRuntimeBrowserFamily()) {
                                 readXHR();
                                 return;
                             }
-                            switch (host.runtime) {
-                                case host.RUNTIME_NWJS:
-                                case host.RUNTIME_NODEJS:
-                                    readNode();
-                                    break;
-                                default:
-                                    refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                            else {
+                                refuse(new Error(host.ERROR_RUNTIME_NOT_SUPPORTED, ""));
+                                return;
                             }
                         }
                     }
