@@ -495,7 +495,7 @@
                 }
             }
             else if (type.isString(uri)) {
-                if (host.isRuntimeBrowserFamily() && typeof location != "undefined" && location.protocol && location.host && location.pathname) {
+                if (host.isRuntimeBrowserFamily() && !host.isRuntimeNodeFamily() && typeof location != "undefined" && location.protocol && location.host && location.pathname) {
                     var idxLastSlash = location.pathname.lastIndexOf("/");
                     var path = "/";
                     if (idxLastSlash >= 0) {
